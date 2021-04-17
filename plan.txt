@@ -1,0 +1,8 @@
+1- build class for twitch irc comunication.
+    a-join leave chat
+    b-get chat
+    c-send chat
+    d-keep alive
+    
+2- build class for twitch api 
+3- test class

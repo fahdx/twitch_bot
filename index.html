@@ -1,0 +1,179 @@
+
+
+<html>
+
+<head>
+
+    <style>
+      mark { 
+      background-color: black;
+      color: black;
+      }
+      img {
+      border-radius: 50%;
+      }
+        .wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+        }
+
+        .three {
+        grid-column: 1;
+        grid-row: 2 / 5;
+        }
+
+
+        input[type=text] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;
+    }
+
+    input[type=text]:focus {
+    background-color: lightblue;
+    }
+        .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        }
+
+        .button5 {
+        background-color: white;
+        color: black;
+        border: 2px solid #555555;
+        }
+
+        .button5:hover {
+        background-color: #555555;
+        color: white;
+        }
+        .button2 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #008CBA;
+        }
+
+        .button2:hover {
+        background-color: #008CBA;
+        color: white;
+        }
+
+        .button3 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #f44336;
+        }
+
+        .button3:hover {
+        background-color: #f44336;
+        color: white;
+        }
+        body {
+          font-family: Arial;
+          /* color: white; */
+        }
+        
+        .split {
+          height: 100%;
+          width: 70%;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          overflow-x: hidden;
+          padding-top: 20px;
+        }
+
+        .split_left {
+          height: 90%;
+          width: 30%;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          overflow-x: hidden;
+          padding-top: 20px;
+        }
+
+        .chat{
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 30%;
+        }
+        
+        .left {
+          left: 0;
+          /* background-color: #111; */
+        }
+        
+        .right {
+          right: 0;
+          /* backround-color: red; */
+        }
+        
+        .centered {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+        }
+        
+        .centered img {
+          width: 150px;
+          border-radius: 50%;
+        }
+        </style>
+
+</head>
+
+<body>
+
+
+
+    <!-- <div style="margin-left: 100px;">
+        <textarea id="twtch_chat1" name="w3review" rows="50" cols="100"></textarea>
+          </div> -->
+          <br><br>
+
+          <div class="split_left left"id="twtch_chat" contenteditable="true">
+           
+            
+         </div>
+         <input  class ="chat" type="text" style="width:30%;"  id="chatting"  value="">
+         <!-- Hello, my name is <span style="color: blue;">Bob</span>
+            and I have a friend name <span style="color: green;">Joe</span>.
+         
+           -->
+        
+        <div class="split right">
+         <button id="clean" class="button button5" type="button">Clean</button> 
+
+         <input type="text" id="user"  value="drututt">
+         <button id="change_user" class="button button2" type="button button2">start</button> 
+         <button id="stop" class="button button3" type="button">stop</button> 
+
+         <img id="profile" src="defult.png"  width="300" height="300">
+         <div id="test" contenteditable="true">
+            
+        </div>
+        </div>
+
+    
+
+     <script src="main.js"></script>
+</body>
+</html>
