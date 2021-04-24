@@ -5,21 +5,28 @@ let marked = new Map()
 var boradcaster_name;
 
 
-const chat = document.getElementById("twtch_chat");
+
 
 
 const colors = ['#db4424' , '#f7de27', '#2786f7' , '#f727cb','#56f727','#eaf727','#f7279c','#27f1f7']
 let  span_start="<span style='color: #db4424;'>"
 const span_end= "</span>"
 
+let gl_mp = ''
+
+
+const chat = document.getElementById("twtch_chat");
 const btn_clean = document.getElementById("clean")
 const btn_change = document.getElementById("change_user")
 const input_user = document.getElementById("user")
 const btn_stop = document.getElementById("stop")
 const img = document.getElementById("profile");
 const chatting = document.getElementById("chatting")
+const table = document.getElementById("table2")
 
 
+
+console.log('table exist? '+table)
 
 
 function insert_id(txt,ids)
@@ -61,22 +68,22 @@ function select_color()
 
 function change_user()
 {
-    temp = input_user.value.trim()
+    new_user = input_user.value.trim()
     //this.boradcaster_name=temp
 
 
-    console.log(temp)
+    console.log(new_user)
 
 
-    if (temp !== "")
+    if (new_user !== "")
     {
         
 
         close();
         console.log("sucessed")
        
-        connect("wss://irc-ws.chat.twitch.tv:443", "yl0sg0db6enrrz86ssgilfs3gq9dxf" ,"iifahdx_", temp )
-        get_user_info(temp)
+        connect("wss://irc-ws.chat.twitch.tv:443", "yl0sg0db6enrrz86ssgilfs3gq9dxf" ,"iifahdx_", new_user )
+        get_user_info(new_user)
 
         
     }
@@ -287,11 +294,16 @@ function process_msg(str , b_name)
 
             let  mp = new Map(Object.entries(data.data[0]))
 
+            gl_mp = new Map(Object.entries(data.data[0]))
+
 
 
             console.log(mp.get("profile_image_url"))
 
             img.src=""+mp.get("profile_image_url")
+
+            add_table_content(mp)
+
              
             
             
@@ -366,6 +378,43 @@ function force_mark(id)
     
 
     
+}
+
+add_table_content =(mp) =>
+{
+    console.log('----------------------------add_table_content function----------------------')
+    console.log(mp)
+    
+    
+    let txt=''//'<table>'
+    console.log(table)
+
+    for(let [key , value] of mp)
+    {
+
+        if(value!=='')
+        {
+            console.log(key+' = '+value)
+
+            txt += '<tr>'
+            txt+= '<th>'
+            txt+= key
+            txt+='</th>'
+            txt+='<td>'
+            txt+=value
+            txt+='</td>'
+            txt+='</tr>'
+        }
+        else{
+            console.log('skip')
+        }
+        // console.log(key)
+        // console.log(value)
+    }
+
+    //txt+='</table>'
+
+    table.innerHTML=txt 
 }
 
 connect("wss://irc-ws.chat.twitch.tv:443", "yl0sg0db6enrrz86ssgilfs3gq9dxf" ,"iifahdx_", "teej_dv" )
